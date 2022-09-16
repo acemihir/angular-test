@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="app.js"></script>
+<style>
+  .audience_img{
+    width: 100%;
+    height: auto;
+    border: 1px solid black;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 10px;
+    transition: 0.5s;
+  }
+
+  .audience_img:hover{
+    opacity: 0.1;
+  }
+  .audience_name{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: 0.5s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    font-size: 2.5rem;
+    color: white;
+  }
+  .audience_name:hover{
+    opacity: 1;
+  }
+</style>  
+</head>
+
+<body>
+  <div ng-app="myApp" ng-controller="myController">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-3 box" ng-repeat="img in list | orderBy : '- source_items.audience_size'">
+          <img class="audience_img" src="{{img.social_media_pages.picture}}" />
+          <span class="audience_name">{{img.name}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
